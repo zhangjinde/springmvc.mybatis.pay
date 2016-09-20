@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.yeahka.dao.lepos.MerchantDao">
+
+  <resultMap type="org.yeahka.model.Merchant" id="merchantResultMap">
+    <result column="F_merchant_id" property="merchantId" />
+    <result column="F_merchant_name" property="merchantName" />
+  	<result column="F_bind_merchant_key" property="merchantKey" />
+    <result column="F_merchant_flag" property="merchantFlag" />
+  </resultMap>
+
+  <select id="getMerchantById" parameterType="java.util.Map"
+  		resultMap="merchantResultMap" statementType="STATEMENT">
+  			select F_merchant_id,F_merchant_name, F_bind_merchant_key,F_merchant_flag
+    		from ${dbAndTable}
+   			where F_merchant_id = ${merchantId}
+  </select>
+
+</mapper>
